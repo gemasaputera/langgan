@@ -217,7 +217,7 @@
       "Dark mode by default (near-black midnight-bg), light mode available",
       "Semantic OKLCH tokens throughout — no hard-coded colors in components",
       "Mobile-first touch targets (minimum 44×44dp)",
-      "Serif italic accents on display headings for editorial warmth",
+      "Montserrat italic accents on display headings for editorial warmth",
       "WCAG 2.1 AA contrast compliance on all text",
       "prefers-reduced-motion respected: animations become instant transitions"
     ],
@@ -229,12 +229,12 @@
       },
       {
         "name": "The Warmth-by-Accent Rule",
-        "body": "Body backgrounds are never cream, sand, or beige. Warmth is carried entirely by the sunset accent color, the rounded corners, and the serif italic display accents — never by tinting the neutral bg toward warmth.",
+        "body": "Body backgrounds are never cream, sand, or beige. Warmth is carried entirely by the sunset accent color, the rounded corners, and the Montserrat italic display accents — never by tinting the neutral bg toward warmth.",
         "section": "colors"
       },
       {
         "name": "The Single Family Rule",
-        "body": "Geist carries the entire UI. The serif italic accent is the only exception, and it is applied selectively (one phrase per hero, never in body copy). Adding a second sans-serif would fracture the system.",
+        "body": "Geist carries the entire UI. The Montserrat italic accent is the only exception, and it is applied selectively (one phrase per hero, never in body copy). Adding a second sans-serif would fracture the system.",
         "section": "typography"
       },
       {

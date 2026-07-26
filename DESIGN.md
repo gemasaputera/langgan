@@ -114,7 +114,7 @@ The system rejects the generic SaaS template, the cartoonish fintech mascot, and
 - Dark mode by default (near-black `midnight-bg`), light mode available
 - Semantic OKLCH tokens throughout — no hard-coded colors in components
 - Mobile-first touch targets (minimum 44×44dp)
-- Serif italic accents on display headings for editorial warmth (Georgia on accent phrases)
+- Montserrat italic accents on display headings for editorial warmth (Montserrat on accent phrases)
 - WCAG 2.1 AA contrast compliance on all text
 - `prefers-reduced-motion` respected: animations become instant transitions
 
@@ -147,16 +147,16 @@ The palette is built on a **Restrained** color strategy: tinted neutrals carry 8
 ### Named Rules
 **The One Voice Rule.** The primary cobalt accent is used on ≤10% of any given screen. Its rarity is the point — when it appears, it signals action. The sunset gold is rarer still: ≤5% of screen real estate.
 
-**The Warmth-by-Accent Rule.** Body backgrounds are never cream, sand, or beige. Warmth is carried entirely by the sunset accent color, the rounded corners, and the serif italic display accents — never by tinting the neutral bg toward warmth.
+**The Warmth-by-Accent Rule.** Body backgrounds are never cream, sand, or beige. Warmth is carried entirely by the sunset accent color, the rounded corners, and the Montserrat italic display accents — never by tinting the neutral bg toward warmth.
 
 ## 3. Typography
 
 **Display Font:** Geist (with system-ui fallback)  
 **Body Font:** Geist (with system-ui fallback)  
 **Label/Mono Font:** Geist Mono (with SF Mono fallback)  
-**Serif Accent:** Georgia, "Times New Roman", serif (for italic display accents only)
+**Serif Accent:** Montserrat (for italic display accents only)
 
-**Character:** A single geometric sans-serif family (Geist) carries the entire UI with clean precision and modern warmth. The pairing is not a pair: Geist alone handles all roles. The only departure is a serif italic accent on hero display headings, where the phrase "Tagihan Langganan" renders in Georgia italic to add editorial personality without disrupting the systematic feel.
+**Character:** A single geometric sans-serif family (Geist) carries the entire UI with clean precision and modern warmth. The pairing is not a pair: Geist alone handles all roles. The only departure is a serif italic accent on hero display headings, where the phrase "Tagihan Langganan" renders in Montserrat italic to add editorial personality without disrupting the systematic feel.
 
 ### Hierarchy
 - **Display** (700 weight, `clamp(2rem, 5vw, 4.5rem)`, line-height 1.1, letter-spacing -0.02em): Hero headlines on the landing page. Maximum one per page. Uses `text-wrap: balance` for even line lengths.
@@ -167,7 +167,7 @@ The palette is built on a **Restrained** color strategy: tinted neutrals carry 8
 - **Mono** (400 weight, 0.875rem, line-height 1.5): Currency amounts in IDR, date stamps, technical metadata. Uses `tabular-nums` for alignment.
 
 ### Named Rules
-**The Single Family Rule.** Geist carries the entire UI. The serif italic accent is the only exception, and it is applied selectively (one phrase per hero, never in body copy). Adding a second sans-serif would fracture the system.
+**The Single Family Rule.** Geist carries the entire UI. The Montserrat italic accent is the only exception, and it is applied selectively (one phrase per hero, never in body copy). Adding a second sans-serif would fracture the system.
 
 **The 16px Floor Rule.** Body text is never smaller than 1rem (16px). Labels can be 0.875rem (14px) only when they are true labels, not reading text.
 
