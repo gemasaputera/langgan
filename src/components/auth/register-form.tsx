@@ -56,7 +56,7 @@ export function RegisterForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="name" className="text-neutral-300">
+        <Label htmlFor="name" className="text-secondary-foreground">
           Nama
         </Label>
         <Input
@@ -66,11 +66,11 @@ export function RegisterForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="bg-neutral-900 border-white/10 text-white placeholder:text-neutral-500"
+          className="text-foreground placeholder:text-muted-foreground"
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="email" className="text-neutral-300">
+        <Label htmlFor="email" className="text-secondary-foreground">
           Email
         </Label>
         <Input
@@ -80,11 +80,11 @@ export function RegisterForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="bg-neutral-900 border-white/10 text-white placeholder:text-neutral-500"
+          className="text-foreground placeholder:text-muted-foreground"
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="password" className="text-neutral-300">
+        <Label htmlFor="password" className="text-secondary-foreground">
           Kata Sandi
         </Label>
         <Input
@@ -94,11 +94,11 @@ export function RegisterForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          className="bg-neutral-900 border-white/10 text-white placeholder:text-neutral-500"
+          className="text-foreground placeholder:text-muted-foreground"
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="confirmPassword" className="text-neutral-300">
+        <Label htmlFor="confirmPassword" className="text-secondary-foreground">
           Konfirmasi Kata Sandi
         </Label>
         <Input
@@ -108,15 +108,15 @@ export function RegisterForm() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
-          className="bg-neutral-900 border-white/10 text-white placeholder:text-neutral-500"
+          className="text-foreground placeholder:text-muted-foreground"
         />
       </div>
       {error && (
-        <p className="text-sm text-red-400">{error}</p>
+        <p className="text-sm text-destructive" role="alert">{error}</p>
       )}
       <Button
         type="submit"
-        className="w-full bg-indigo-600 text-white hover:bg-indigo-700"
+        className="min-h-11 w-full"
         disabled={loading}
       >
         {loading ? "Membuat akun..." : "Daftar"}

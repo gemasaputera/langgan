@@ -23,7 +23,11 @@ export async function getCategories() {
     include: { _count: { select: { subscriptions: true } } },
     orderBy: { name: "asc" },
   });
-  return categories;
+  return categories.map((cat) => ({
+    ...cat,
+    createdAt: cat.createdAt.toISOString(),
+    updatedAt: cat.updatedAt.toISOString(),
+  }));
 }
 
 export async function createCategory(data: CategoryInput) {

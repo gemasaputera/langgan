@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { updateSubscription } from "@/lib/actions/subscriptions";
-import { getCategories } from "@/lib/actions/categories";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -30,6 +29,7 @@ interface EditSubscriptionDialogProps {
     categoryId: string | null;
     notes: string | null;
   };
+  categories: { id: string; name: string; color: string }[];
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onUpdated: () => void;
@@ -37,6 +37,7 @@ interface EditSubscriptionDialogProps {
 
 export function EditSubscriptionDialog({
   subscription,
+  categories,
   open,
   onOpenChange,
   onUpdated,
@@ -49,7 +50,6 @@ export function EditSubscriptionDialog({
   const [notes, setNotes] = useState(subscription.notes || "");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [categories, setCategories] = useState<{ id: string; name: string; color: string }[]>([]);
 
   useEffect(() => {
     if (open) {
@@ -59,7 +59,6 @@ export function EditSubscriptionDialog({
       setNextPaymentDate(subscription.nextPaymentDate.split("T")[0]);
       setCategoryId(subscription.categoryId || "");
       setNotes(subscription.notes || "");
-      getCategories().then(setCategories).catch(console.error);
     }
   }, [open, subscription]);
 
@@ -90,13 +89,13 @@ export function EditSubscriptionDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-neutral-900 border-white/10 text-white max-h-[90vh] overflow-y-auto">
+      <DialogContent className="bg-popover border-border text-popover-foreground max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Edit Langganan</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="edit-name" className="text-neutral-300">
+            <Label htmlFor="edit-name" className="text-secondary-foreground">
               Nama Langganan
             </Label>
             <Input
@@ -105,11 +104,12 @@ export function EditSubscriptionDialog({
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="bg-neutral-800 border-white/10 text-white placeholder:text-neutral-500"
+              maxLength={100}
+              className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="edit-price" className="text-neutral-300">
+            <Label htmlFor="edit-price" className="text-secondary-foreground">
               Harga (IDR)
             </Label>
             <Input
@@ -121,16 +121,16 @@ export function EditSubscriptionDialog({
               required
               min="0"
               step="1000"
-              className="bg-neutral-800 border-white/10 text-white placeholder:text-neutral-500"
+              className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
           <div className="space-y-2">
-            <Label className="text-neutral-300">Siklus Penagihan</Label>
+            <Label className="text-secondary-foreground">Siklus Penagihan</Label>
             <Select value={billingCycle} onValueChange={(v) => setBillingCycle(v ?? "monthly")}>
-              <SelectTrigger className="bg-neutral-800 border-white/10 text-white">
+              <SelectTrigger className="bg-muted border-border text-foreground">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="bg-neutral-800 border-white/10">
+              <SelectContent className="bg-muted border-border">
                 <SelectItem value="daily">Harian</SelectItem>
                 <SelectItem value="weekly">Mingguan</SelectItem>
                 <SelectItem value="monthly">Bulanan</SelectItem>
@@ -139,7 +139,7 @@ export function EditSubscriptionDialog({
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="edit-date" className="text-neutral-300">
+            <Label htmlFor="edit-date" className="text-secondary-foreground">
               Pembayaran Berikutnya
             </Label>
             <Input
@@ -148,16 +148,16 @@ export function EditSubscriptionDialog({
               value={nextPaymentDate}
               onChange={(e) => setNextPaymentDate(e.target.value)}
               required
-              className="bg-neutral-800 border-white/10 text-white"
+              className="bg-muted border-border text-foreground"
             />
           </div>
           <div className="space-y-2">
-            <Label className="text-neutral-300">Kategori (Opsional)</Label>
+            <Label className="text-secondary-foreground">Kategori (Opsional)</Label>
             <Select value={categoryId} onValueChange={(v) => setCategoryId(v ?? "")}>
-              <SelectTrigger className="bg-neutral-800 border-white/10 text-white">
+              <SelectTrigger className="bg-muted border-border text-foreground">
                 <SelectValue placeholder="Pilih kategori" />
               </SelectTrigger>
-              <SelectContent className="bg-neutral-800 border-white/10">
+              <SelectContent className="bg-muted border-border">
                 {categories.map((cat) => (
                   <SelectItem key={cat.id} value={cat.id}>
                     {cat.name}
@@ -167,7 +167,7 @@ export function EditSubscriptionDialog({
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="edit-notes" className="text-neutral-300">
+            <Label htmlFor="edit-notes" className="text-secondary-foreground">
               Catatan (Opsional)
             </Label>
             <Input
@@ -175,13 +175,18 @@ export function EditSubscriptionDialog({
               placeholder="Catatan tambahan"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="bg-neutral-800 border-white/10 text-white placeholder:text-neutral-500"
+              maxLength={500}
+              className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
-          {error && <p className="text-sm text-red-400">{error}</p>}
+          {error && (
+            <p className="text-sm text-destructive" aria-live="polite" role="alert">
+              {error}
+            </p>
+          )}
           <Button
             type="submit"
-            className="w-full bg-indigo-600 text-white hover:bg-indigo-700"
+            className="w-full"
             disabled={loading}
           >
             {loading ? "Menyimpan..." : "Perbarui"}

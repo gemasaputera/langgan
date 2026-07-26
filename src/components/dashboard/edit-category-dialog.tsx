@@ -65,13 +65,13 @@ export function EditCategoryDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-neutral-900 border-white/10 text-white">
+      <DialogContent className="bg-popover border-border text-popover-foreground">
         <DialogHeader>
           <DialogTitle>Edit Kategori</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name" className="text-neutral-300">
+            <Label htmlFor="name" className="text-secondary-foreground">
               Nama Kategori
             </Label>
             <Input
@@ -80,29 +80,36 @@ export function EditCategoryDialog({
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="bg-neutral-800 border-white/10 text-white placeholder:text-neutral-500"
+              maxLength={50}
+              className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
           <div className="space-y-2">
-            <Label className="text-neutral-300">Warna</Label>
+            <Label className="text-secondary-foreground">Warna</Label>
             <div className="flex flex-wrap gap-2">
               {COLORS.map((c) => (
                 <button
                   key={c}
                   type="button"
-                  className={`h-8 w-8 rounded-full transition-transform ${
-                    color === c ? "scale-125 ring-2 ring-white" : ""
+                  className={`h-8 w-8 rounded-full transition-transform focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                    color === c ? "scale-125 ring-2 ring-foreground" : ""
                   }`}
                   style={{ backgroundColor: c }}
                   onClick={() => setColor(c)}
+                  aria-label={`Pilih warna ${c}`}
+                  aria-pressed={color === c}
                 />
               ))}
             </div>
           </div>
-          {error && <p className="text-sm text-red-400">{error}</p>}
+          {error && (
+            <p className="text-sm text-destructive" aria-live="polite" role="alert">
+              {error}
+            </p>
+          )}
           <Button
             type="submit"
-            className="w-full bg-indigo-600 text-white hover:bg-indigo-700"
+            className="w-full"
             disabled={loading}
           >
             {loading ? "Menyimpan..." : "Perbarui"}

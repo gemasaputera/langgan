@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-26T03:50:00Z",
+  "title": "Design System: Langgan",
+  "extensions": {
+    "colorMeta": {
+      "midnight-bg": {
+        "role": "neutral",
+        "displayName": "Midnight Background",
+        "canonical": "oklch(0.08 0.012 240)",
+        "tonalRamp": [
+          "oklch(0.02 0.005 240)",
+          "oklch(0.05 0.008 240)",
+          "oklch(0.08 0.012 240)",
+          "oklch(0.10 0.013 240)",
+          "oklch(0.13 0.015 240)",
+          "oklch(0.17 0.018 240)",
+          "oklch(0.25 0.020 240)",
+          "oklch(0.35 0.022 240)"
+        ]
+      },
+      "midnight-surface": {
+        "role": "neutral",
+        "displayName": "Midnight Surface",
+        "canonical": "oklch(0.13 0.015 240)",
+        "tonalRamp": [
+          "oklch(0.02 0.005 240)",
+          "oklch(0.05 0.008 240)",
+          "oklch(0.08 0.012 240)",
+          "oklch(0.10 0.013 240)",
+          "oklch(0.13 0.015 240)",
+          "oklch(0.17 0.018 240)",
+          "oklch(0.25 0.020 240)",
+          "oklch(0.35 0.022 240)"
+        ]
+      },
+      "cobalt": {
+        "role": "primary",
+        "displayName": "Midnight Blue",
+        "canonical": "oklch(0.52 0.14 240)",
+        "tonalRamp": [
+          "oklch(0.20 0.05 240)",
+          "oklch(0.30 0.08 240)",
+          "oklch(0.40 0.11 240)",
+          "oklch(0.52 0.14 240)",
+          "oklch(0.60 0.14 240)",
+          "oklch(0.65 0.12 240)",
+          "oklch(0.75 0.10 240)",
+          "oklch(0.85 0.06 240)"
+        ]
+      },
+      "sunset": {
+        "role": "accent",
+        "displayName": "Sunset Gold",
+        "canonical": "oklch(0.72 0.14 75)",
+        "tonalRamp": [
+          "oklch(0.30 0.05 75)",
+          "oklch(0.40 0.08 75)",
+          "oklch(0.50 0.11 75)",
+          "oklch(0.60 0.13 75)",
+          "oklch(0.72 0.14 75)",
+          "oklch(0.80 0.10 75)",
+          "oklch(0.88 0.07 75)",
+          "oklch(0.95 0.03 75)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(0.94 0.008 240)",
+        "tonalRamp": [
+          "oklch(0.15 0.008 240)",
+          "oklch(0.25 0.008 240)",
+          "oklch(0.40 0.008 240)",
+          "oklch(0.55 0.010 240)",
+          "oklch(0.65 0.010 240)",
+          "oklch(0.75 0.009 240)",
+          "oklch(0.85 0.008 240)",
+          "oklch(0.94 0.008 240)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headlines only. Maximum one per page."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles, dialog headers, page titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles, form labels, list headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions, help text, summaries. Max 65ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, badges, nav, placeholders. Uppercase only for ≤4 words."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Currency amounts, dates, metadata. Uses tabular-nums."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-low",
+        "value": "0 4px 24px rgba(0, 0, 0, 0.12)",
+        "purpose": "Card hover states, dropdown menus. Diffuse and subtle."
+      },
+      {
+        "name": "ambient-medium",
+        "value": "0 8px 32px rgba(0, 0, 0, 0.16)",
+        "purpose": "Dialog overlays, modal popups. Slightly more presence."
+      },
+      {
+        "name": "ambient-glow",
+        "value": "0 0 40px rgba(74, 109, 229, 0.15)",
+        "purpose": "Hero ambient glow, focus ring halos. Colored warmth."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-quart",
+        "value": "cubic-bezier(0.25, 1, 0.5, 1)",
+        "purpose": "Default easing for entrance animations and state transitions."
+      },
+      {
+        "name": "duration-fast",
+        "value": "0.15s",
+        "purpose": "Button hovers, focus rings, micro-interactions."
+      },
+      {
+        "name": "duration-standard",
+        "value": "0.3s",
+        "purpose": "Card hovers, dropdown opens, dialog transitions."
+      },
+      {
+        "name": "duration-slow",
+        "value": "0.6s",
+        "purpose": "Scroll-triggered entrance animations (fade-in-up)."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action button. Cobalt blue with ink text. Used for CTA, form submission, and primary actions.",
+      "html": "<button class=\"ds-btn-primary\">Mulai Gratis</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 36px; gap: 6px; padding: 10px 20px; background: #4a6de5; color: #e8eaf0; font-family: 'Geist', system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; line-height: 1; border: 1px solid transparent; border-radius: 10px; cursor: pointer; transition: background 0.15s, transform 0.15s; outline: none; } .ds-btn-primary:hover { background: #7b93f0; transform: translateY(-1px) scale(1.02); } .ds-btn-primary:focus-visible { outline: 3px solid rgba(74, 109, 229, 0.5); outline-offset: 2px; } .ds-btn-primary:active { transform: translateY(0); } .ds-btn-primary:disabled { opacity: 0.5; pointer-events: none; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action. Transparent with subtle border. Used for 'Masuk', cancel, and secondary choices.",
+      "html": "<button class=\"ds-btn-outline\">Masuk</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; height: 36px; gap: 6px; padding: 10px 20px; background: transparent; color: #e8eaf0; font-family: 'Geist', system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; line-height: 1; border: 1px solid rgba(232, 234, 240, 0.1); border-radius: 10px; cursor: pointer; transition: background 0.15s; outline: none; } .ds-btn-outline:hover { background: #181a24; } .ds-btn-outline:focus-visible { outline: 3px solid rgba(74, 109, 229, 0.5); outline-offset: 2px; } .ds-btn-outline:disabled { opacity: 0.5; pointer-events: none; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Primary container for subscription items, categories, and feature highlights.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-header\"><div class=\"ds-card-title\">Netflix</div><div class=\"ds-card-description\">Rp 186.000 / bulan</div></div><div class=\"ds-card-content\">Jatuh tempo 15 Juli 2026</div></div>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 16px; padding: 16px; background: #12131a; color: #e8eaf0; font-family: 'Geist', system-ui, sans-serif; font-size: 0.875rem; border-radius: 14px; border: 1px solid rgba(232, 234, 240, 0.1); transition: box-shadow 0.3s; } .ds-card:hover { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12); } .ds-card-header { display: grid; grid-template-columns: 1fr auto; gap: 4px; } .ds-card-title { font-size: 1rem; font-weight: 600; line-height: 1.3; } .ds-card-description { font-size: 0.875rem; color: #9a9eb5; } .ds-card-content { font-size: 0.875rem; color: #9a9eb5; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Text input for forms. Transparent bg with subtle border. Focus ring in cobalt.",
+      "html": "<input class=\"ds-input\" placeholder=\"Nama langganan\" />",
+      "css": ".ds-input { width: 100%; height: 32px; padding: 6px 10px; background: transparent; color: #e8eaf0; font-family: 'Geist', system-ui, sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.5; border: 1px solid rgba(232, 234, 240, 0.15); border-radius: 10px; outline: none; transition: border-color 0.15s, box-shadow 0.15s; } .ds-input::placeholder { color: #9a9eb5; } .ds-input:focus-visible { border-color: rgba(74, 109, 229, 0.5); box-shadow: 0 0 0 3px rgba(74, 109, 229, 0.5); } .ds-input:disabled { background: rgba(232, 234, 240, 0.05); cursor: not-allowed; opacity: 0.5; } .ds-input[aria-invalid='true'] { border-color: rgba(224, 90, 71, 0.5); box-shadow: 0 0 0 3px rgba(224, 90, 71, 0.2); }"
+    },
+    {
+      "name": "Badge",
+      "kind": "chip",
+      "refersTo": "badge-default",
+      "description": "Pill-shaped labels for status, categories, and tags.",
+      "html": "<span class=\"ds-badge\">Aktif</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; justify-content: center; height: 20px; width: fit-content; padding: 0 8px; background: #4a6de5; color: #e8eaf0; font-family: 'Geist', system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; line-height: 1; border-radius: 9999px; border: 1px solid transparent; white-space: nowrap; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Fixed top navigation with blur backdrop. Logo left, links center, avatar right.",
+      "html": "<nav class=\"ds-nav\"><div class=\"ds-nav-brand\"><div class=\"ds-nav-logo\">L</div><span class=\"ds-nav-title\">Langgan</span></div><div class=\"ds-nav-links\"><a class=\"ds-nav-link ds-nav-link-active\" href=\"/dashboard\">Dashboard</a><a class=\"ds-nav-link\" href=\"/dashboard/categories\">Kategori</a></div></nav>",
+      "css": ".ds-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 16px; background: rgba(10, 11, 16, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(232, 234, 240, 0.1); font-family: 'Geist', system-ui, sans-serif; } .ds-nav-brand { display: flex; align-items: center; gap: 8px; } .ds-nav-logo { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #4a6de5; color: #e8eaf0; font-size: 0.875rem; font-weight: 700; border-radius: 8px; } .ds-nav-title { font-size: 1.25rem; font-weight: 700; color: #e8eaf0; } .ds-nav-links { display: flex; align-items: center; gap: 4px; } .ds-nav-link { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 8px; font-size: 0.875rem; font-weight: 500; color: #9a9eb5; text-decoration: none; transition: color 0.15s, background 0.15s; } .ds-nav-link:hover { color: #e8eaf0; background: rgba(24, 26, 36, 0.5); } .ds-nav-link-active { color: #e8eaf0; background: #181a24; }"
+    },
+    {
+      "name": "Dialog",
+      "kind": "custom",
+      "refersTo": "dialog",
+      "description": "Modal dialog with overlay backdrop, rounded content, and footer actions.",
+      "html": "<div class=\"ds-dialog-overlay\"><div class=\"ds-dialog\"><div class=\"ds-dialog-header\"><div class=\"ds-dialog-title\">Tambah Langganan</div></div><div class=\"ds-dialog-content\">Form fields go here</div><div class=\"ds-dialog-footer\"><button class=\"ds-btn-outline\">Batal</button><button class=\"ds-btn-primary\">Simpan</button></div></div></div>",
+      "css": ".ds-dialog-overlay { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.1); backdrop-filter: blur(4px); } .ds-dialog { display: grid; gap: 16px; width: 100%; max-width: 400px; padding: 16px; background: #181a24; color: #e8eaf0; font-family: 'Geist', system-ui, sans-serif; font-size: 0.875rem; border-radius: 14px; border: 1px solid rgba(232, 234, 240, 0.1); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16); } .ds-dialog-title { font-size: 1rem; font-weight: 600; line-height: 1.3; } .ds-dialog-footer { display: flex; flex-direction: row; justify-content: flex-end; gap: 8px; padding-top: 12px; margin: 0 -16px -16px -16px; padding: 12px 16px; background: rgba(24, 26, 36, 0.5); border-top: 1px solid rgba(232, 234, 240, 0.1); border-radius: 0 0 14px 14px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Warm Accountant's Desk",
+    "overview": "Langgan is a personal subscription tracker for Indonesian consumers. The visual system embodies the feeling of sitting across from a friend who happens to be great with spreadsheets: warm, trustworthy, and never cold or corporate. The default dark mode evokes a late-night check-in — calm, focused, and free of the anxiety that dense banking dashboards provoke.\n\nThe system rejects the generic SaaS template, the cartoonish fintech mascot, and the overly serious navy-and-gold trading aesthetic. Instead, it finds its identity in warm minimalism: clean layouts with generous breathing room, rounded corners that soften the financial context, and a restrained color strategy where cobalt blue carries trust and a warm amber accent signals action and attention.",
+    "keyCharacteristics": [
+      "Dark mode by default (near-black midnight-bg), light mode available",
+      "Semantic OKLCH tokens throughout — no hard-coded colors in components",
+      "Mobile-first touch targets (minimum 44×44dp)",
+      "Serif italic accents on display headings for editorial warmth",
+      "WCAG 2.1 AA contrast compliance on all text",
+      "prefers-reduced-motion respected: animations become instant transitions"
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "The primary cobalt accent is used on ≤10% of any given screen. Its rarity is the point — when it appears, it signals action. The sunset gold is rarer still: ≤5% of screen real estate.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warmth-by-Accent Rule",
+        "body": "Body backgrounds are never cream, sand, or beige. Warmth is carried entirely by the sunset accent color, the rounded corners, and the serif italic display accents — never by tinting the neutral bg toward warmth.",
+        "section": "colors"
+      },
+      {
+        "name": "The Single Family Rule",
+        "body": "Geist carries the entire UI. The serif italic accent is the only exception, and it is applied selectively (one phrase per hero, never in body copy). Adding a second sans-serif would fracture the system.",
+        "section": "typography"
+      },
+      {
+        "name": "The 16px Floor Rule",
+        "body": "Body text is never smaller than 1rem (16px). Labels can be 0.875rem (14px) only when they are true labels, not reading text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Shadows appear only as a response to state (hover, elevation, focus). No permanent card shadows — that is the SaaS template tell.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Use semantic tokens (bg-card, text-primary, border-border) — never hard-code colors.",
+      "Keep body text at 1rem (16px) minimum. Labels can be 0.875rem.",
+      "Round all corners at the rounded-md (10px) or rounded-lg (14px) scale.",
+      "Use text-balance on h1–h3 and text-pretty on long prose.",
+      "Provide 44×44dp minimum touch targets on all interactive elements.",
+      "Use focus-visible:ring-2 + ring-offset-2 on all focusable elements.",
+      "Respect prefers-reduced-motion: disable fade-in-up, keep opacity at 1.",
+      "Write all copy in Indonesian. IDR formatting: Rp 150.000.",
+      "Make error states informative with retry actions."
+    ],
+    "donts": [
+      "Use cream, sand, beige, or parchment body backgrounds.",
+      "Use gradient text (background-clip: text).",
+      "Use side-stripe borders (border-left > 1px as colored accent).",
+      "Use the hero-metric template (big number + small label + gradient).",
+      "Use identical card grids with icon + heading + text repeated endlessly.",
+      "Use tiny uppercase tracked eyebrows above every section.",
+      "Use cartoonish or childish aesthetics (Duolingo-level playfulness, bubbly shapes).",
+      "Build dense banking dashboards (dark-gray data grids, tiny numbers, overwhelming tables).",
+      "Use generic SaaS template copy ('streamline / empower / supercharge / unleash / transform').",
+      "Use overly serious fintech palettes (navy + gold, all-caps labels, rigid hierarchy).",
+      "Use glassmorphism as default.",
+      "Disable browser zoom (user-scalable=no).",
+      "Use px for font sizes.",
+      "Use all-caps for body copy."
+    ]
+  }
+}

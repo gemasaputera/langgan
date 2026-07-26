@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { createSubscription } from "@/lib/actions/subscriptions";
-import { getCategories } from "@/lib/actions/categories";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -24,9 +23,10 @@ import {
 interface AddSubscriptionDialogProps {
   children: React.ReactNode;
   onCreated: () => void;
+  categories: { id: string; name: string; color: string }[];
 }
 
-export function AddSubscriptionDialog({ children, onCreated }: AddSubscriptionDialogProps) {
+export function AddSubscriptionDialog({ children, onCreated, categories }: AddSubscriptionDialogProps) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -36,13 +36,6 @@ export function AddSubscriptionDialog({ children, onCreated }: AddSubscriptionDi
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [categories, setCategories] = useState<{ id: string; name: string; color: string }[]>([]);
-
-  useEffect(() => {
-    if (open) {
-      getCategories().then(setCategories).catch(console.error);
-    }
-  }, [open]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,48 +70,51 @@ export function AddSubscriptionDialog({ children, onCreated }: AddSubscriptionDi
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={<span />}>{children}</DialogTrigger>
-      <DialogContent className="bg-neutral-900 border-white/10 text-white max-h-[90vh] overflow-y-auto">
+      <DialogTrigger render={<span />} nativeButton={false}>
+        {children}
+      </DialogTrigger>
+      <DialogContent className="bg-popover border-border text-popover-foreground max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Tambah Langganan</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name" className="text-neutral-300">
+            <Label htmlFor="name" className="text-secondary-foreground">
               Nama Langganan
             </Label>
             <Input
               id="name"
-              placeholder="Contoh: Netflix, Spotify"
+              placeholder="Misal: Netflix, Spotify"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="bg-neutral-800 border-white/10 text-white placeholder:text-neutral-500"
+              maxLength={100}
+              className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="price" className="text-neutral-300">
+            <Label htmlFor="price" className="text-secondary-foreground">
               Harga (IDR)
             </Label>
             <Input
               id="price"
               type="number"
-              placeholder="Contoh: 54000"
+              placeholder="Harga per siklus"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               required
               min="0"
               step="1000"
-              className="bg-neutral-800 border-white/10 text-white placeholder:text-neutral-500"
+              className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
           <div className="space-y-2">
-            <Label className="text-neutral-300">Siklus Penagihan</Label>
+            <Label className="text-secondary-foreground">Siklus Penagihan</Label>
             <Select value={billingCycle} onValueChange={(v) => setBillingCycle(v ?? "monthly")}>
-              <SelectTrigger className="bg-neutral-800 border-white/10 text-white">
+              <SelectTrigger className="bg-muted border-border text-foreground">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="bg-neutral-800 border-white/10">
+              <SelectContent className="bg-muted border-border">
                 <SelectItem value="daily">Harian</SelectItem>
                 <SelectItem value="weekly">Mingguan</SelectItem>
                 <SelectItem value="monthly">Bulanan</SelectItem>
@@ -127,7 +123,7 @@ export function AddSubscriptionDialog({ children, onCreated }: AddSubscriptionDi
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="nextPaymentDate" className="text-neutral-300">
+            <Label htmlFor="nextPaymentDate" className="text-secondary-foreground">
               Pembayaran Berikutnya
             </Label>
             <Input
@@ -136,16 +132,16 @@ export function AddSubscriptionDialog({ children, onCreated }: AddSubscriptionDi
               value={nextPaymentDate}
               onChange={(e) => setNextPaymentDate(e.target.value)}
               required
-              className="bg-neutral-800 border-white/10 text-white"
+              className="bg-muted border-border text-foreground"
             />
           </div>
           <div className="space-y-2">
-            <Label className="text-neutral-300">Kategori (Opsional)</Label>
+            <Label className="text-secondary-foreground">Kategori (Opsional)</Label>
             <Select value={categoryId} onValueChange={(v) => setCategoryId(v ?? "")}>
-              <SelectTrigger className="bg-neutral-800 border-white/10 text-white">
+              <SelectTrigger className="bg-muted border-border text-foreground">
                 <SelectValue placeholder="Pilih kategori" />
               </SelectTrigger>
-              <SelectContent className="bg-neutral-800 border-white/10">
+              <SelectContent className="bg-muted border-border">
                 {categories.map((cat) => (
                   <SelectItem key={cat.id} value={cat.id}>
                     {cat.name}
@@ -155,7 +151,7 @@ export function AddSubscriptionDialog({ children, onCreated }: AddSubscriptionDi
             </Select>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="notes" className="text-neutral-300">
+            <Label htmlFor="notes" className="text-secondary-foreground">
               Catatan (Opsional)
             </Label>
             <Input
@@ -163,13 +159,18 @@ export function AddSubscriptionDialog({ children, onCreated }: AddSubscriptionDi
               placeholder="Catatan tambahan"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="bg-neutral-800 border-white/10 text-white placeholder:text-neutral-500"
+              maxLength={500}
+              className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
-          {error && <p className="text-sm text-red-400">{error}</p>}
+          {error && (
+            <p className="text-sm text-destructive" aria-live="polite" role="alert">
+              {error}
+            </p>
+          )}
           <Button
             type="submit"
-            className="w-full bg-indigo-600 text-white hover:bg-indigo-700"
+            className="w-full"
             disabled={loading}
           >
             {loading ? "Menyimpan..." : "Simpan"}

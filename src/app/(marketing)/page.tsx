@@ -4,10 +4,10 @@ import { Pricing } from "@/components/landing/pricing";
 
 export default function LandingPage() {
   return (
-    <>
+    <main>
       <Hero />
       <Features />
       <Pricing />
-    </>
+    </main>
   );
 }

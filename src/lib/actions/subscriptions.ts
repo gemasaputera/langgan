@@ -26,7 +26,13 @@ export async function getSubscriptions() {
     include: { category: true },
     orderBy: { nextPaymentDate: "asc" },
   });
-  return subscriptions;
+  return subscriptions.map((sub) => ({
+    ...sub,
+    price: Number(sub.price),
+    nextPaymentDate: sub.nextPaymentDate.toISOString(),
+    createdAt: sub.createdAt.toISOString(),
+    updatedAt: sub.updatedAt.toISOString(),
+  }));
 }
 
 export async function createSubscription(data: SubscriptionInput) {
@@ -48,7 +54,13 @@ export async function createSubscription(data: SubscriptionInput) {
     },
     include: { category: true },
   });
-  return subscription;
+  return {
+    ...subscription,
+    price: Number(subscription.price),
+    nextPaymentDate: subscription.nextPaymentDate.toISOString(),
+    createdAt: subscription.createdAt.toISOString(),
+    updatedAt: subscription.updatedAt.toISOString(),
+  };
 }
 
 export async function updateSubscription(id: string, data: SubscriptionInput) {
@@ -70,7 +82,13 @@ export async function updateSubscription(id: string, data: SubscriptionInput) {
     },
     include: { category: true },
   });
-  return subscription;
+  return {
+    ...subscription,
+    price: Number(subscription.price),
+    nextPaymentDate: subscription.nextPaymentDate.toISOString(),
+    createdAt: subscription.createdAt.toISOString(),
+    updatedAt: subscription.updatedAt.toISOString(),
+  };
 }
 
 export async function deleteSubscription(id: string) {
