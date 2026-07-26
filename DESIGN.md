@@ -17,30 +17,30 @@ colors:
   warning: "#e8a23a"
 typography:
   display:
-    fontFamily: '"Geist", system-ui, sans-serif'
+    fontFamily: '"Montserrat", system-ui, sans-serif'
     fontSize: "clamp(2rem, 5vw, 4.5rem)"
     fontWeight: 700
     lineHeight: 1.1
     letterSpacing: "-0.02em"
   headline:
-    fontFamily: '"Geist", system-ui, sans-serif'
+    fontFamily: '"Montserrat", system-ui, sans-serif'
     fontSize: "clamp(1.5rem, 3vw, 2.5rem)"
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "-0.01em"
   title:
-    fontFamily: '"Geist", system-ui, sans-serif'
+    fontFamily: '"Montserrat", system-ui, sans-serif'
     fontSize: "1.25rem"
     fontWeight: 600
     lineHeight: 1.3
   body:
-    fontFamily: '"Geist", system-ui, sans-serif'
+    fontFamily: '"Karla", system-ui, sans-serif'
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
     letterSpacing: "0em"
   label:
-    fontFamily: '"Geist", system-ui, sans-serif'
+    fontFamily: '"Karla", system-ui, sans-serif'
     fontSize: "0.875rem"
     fontWeight: 500
     lineHeight: 1.4
@@ -151,12 +151,12 @@ The palette is built on a **Restrained** color strategy: tinted neutrals carry 8
 
 ## 3. Typography
 
-**Display Font:** Geist (with system-ui fallback)  
-**Body Font:** Geist (with system-ui fallback)  
+**Display Font:** Montserrat (with system-ui fallback)  
+**Body Font:** Karla (with system-ui fallback)  
 **Label/Mono Font:** Geist Mono (with SF Mono fallback)  
-**Serif Accent:** Montserrat (for italic display accents only)
+**Italic Accent:** Montserrat (for italic display accents)
 
-**Character:** A single geometric sans-serif family (Geist) carries the entire UI with clean precision and modern warmth. The pairing is not a pair: Geist alone handles all roles. The only departure is a serif italic accent on hero display headings, where the phrase "Tagihan Langganan" renders in Montserrat italic to add editorial personality without disrupting the systematic feel.
+**Character:** Montserrat brings editorial warmth to headings with its strong geometric character, while Karla provides exceptional readability in body text with its open, humanist letterforms. The pairing balances presence with comfort: Montserrat commands attention at display sizes, and Karla recedes into a comfortable reading experience. Geist Mono is reserved for code and technical metadata. Montserrat italic is used selectively on hero display headings — the phrase "Tagihan Langganan" renders in italic — to add editorial personality without disrupting the systematic feel.
 
 ### Hierarchy
 - **Display** (700 weight, `clamp(2rem, 5vw, 4.5rem)`, line-height 1.1, letter-spacing -0.02em): Hero headlines on the landing page. Maximum one per page. Uses `text-wrap: balance` for even line lengths.
@@ -167,7 +167,7 @@ The palette is built on a **Restrained** color strategy: tinted neutrals carry 8
 - **Mono** (400 weight, 0.875rem, line-height 1.5): Currency amounts in IDR, date stamps, technical metadata. Uses `tabular-nums` for alignment.
 
 ### Named Rules
-**The Single Family Rule.** Geist carries the entire UI. The Montserrat italic accent is the only exception, and it is applied selectively (one phrase per hero, never in body copy). Adding a second sans-serif would fracture the system.
+**The Two-Family Rule.** Montserrat handles headings and display roles while Karla handles body text. The pairing is intentional: Montserrat's strong geometric character establishes hierarchy, while Karla's humanist warmth ensures comfortable extended reading. Geist Mono is reserved for code and technical metadata. Montserrat italic is applied selectively (one phrase per hero, never in body copy) as an editorial accent.
 
 **The 16px Floor Rule.** Body text is never smaller than 1rem (16px). Labels can be 0.875rem (14px) only when they are true labels, not reading text.
 

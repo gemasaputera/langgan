@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat } from "next/font/google";
+import { Geist_Mono, Karla, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const karla = Karla({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 const montserrat = Montserrat({
-  variable: "--font-montserrat",
+  variable: "--font-heading",
   subsets: ["latin"],
 });
 
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} h-full antialiased dark`}
+      className={`${karla.variable} ${geistMono.variable} ${montserrat.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
