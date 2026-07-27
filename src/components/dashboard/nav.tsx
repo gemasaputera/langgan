@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { LayoutDashboard, FolderOpen, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, FolderOpen, LogOut, Menu, X, User } from "lucide-react";
 
 export function DashboardNav() {
   const pathname = usePathname();
@@ -143,8 +143,12 @@ export function DashboardNav() {
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 bg-popover border-border" align="end">
-              <DropdownMenuItem className="text-secondary-foreground cursor-default">
-                Akun Saya
+              <DropdownMenuItem
+                className="cursor-pointer"
+                onClick={() => router.push("/dashboard/profile")}
+              >
+                <User className="mr-2 h-4 w-4" />
+                Profil Saya
               </DropdownMenuItem>
               <DropdownMenuSeparator className="bg-border" />
               <DropdownMenuItem
