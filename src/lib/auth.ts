@@ -12,7 +12,12 @@ export const auth = betterAuth({
     database: {
       generateId: () => crypto.randomUUID(),
     },
+    cookiePrefix: "langgan",
   },
+  trustedOrigins: [
+    "https://langgan-934.netlify.app",
+    "http://localhost:3000",
+  ],
   emailAndPassword: {
     enabled: true,
   },
