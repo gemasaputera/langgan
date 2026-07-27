@@ -6,6 +6,8 @@ import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { GoogleLoginButton } from "@/components/auth/google-login-button";
+import Link from "next/link";
 
 export function RegisterForm() {
   const [name, setName] = useState("");
@@ -40,7 +42,17 @@ export function RegisterForm() {
       });
 
       if (authError) {
-        setError(authError.message || "Gagal membuat akun");
+        const msg = authError.message || "";
+        if (
+          msg.toLowerCase().includes("already") ||
+          msg.toLowerCase().includes("exist")
+        ) {
+          setError(
+            "Email sudah terdaftar. Silakan masuk dengan akun yang sudah ada."
+          );
+        } else {
+          setError(msg || "Gagal membuat akun");
+        }
         return;
       }
 
@@ -54,7 +66,17 @@ export function RegisterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="space-y-4">
+      <GoogleLoginButton mode="register" />
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <span className="w-full border-t" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-card px-2 text-muted-foreground">atau</span>
+        </div>
+      </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="name" className="text-secondary-foreground">
           Nama
@@ -112,7 +134,17 @@ export function RegisterForm() {
         />
       </div>
       {error && (
-        <p className="text-sm text-destructive" role="alert">{error}</p>
+        <p className="text-sm text-destructive" role="alert">
+          {error}
+          {error.includes("sudah terdaftar") && (
+            <>
+              {" "}
+              <Link href="/login" className="underline">
+                Masuk di sini
+              </Link>
+            </>
+          )}
+        </p>
       )}
       <Button
         type="submit"
@@ -121,6 +153,7 @@ export function RegisterForm() {
       >
         {loading ? "Membuat akun..." : "Daftar"}
       </Button>
-    </form>
+      </form>
+    </div>
   );
 }

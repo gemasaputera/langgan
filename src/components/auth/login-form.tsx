@@ -6,6 +6,7 @@ import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { GoogleLoginButton } from "@/components/auth/google-login-button";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
@@ -40,7 +41,17 @@ export function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="space-y-4">
+      <GoogleLoginButton mode="login" />
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <span className="w-full border-t" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-card px-2 text-muted-foreground">atau</span>
+        </div>
+      </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="email" className="text-secondary-foreground">
           Email
@@ -79,6 +90,7 @@ export function LoginForm() {
       >
         {loading ? "Masuk..." : "Masuk"}
       </Button>
-    </form>
+      </form>
+    </div>
   );
 }
