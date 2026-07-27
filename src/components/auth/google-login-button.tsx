@@ -19,6 +19,7 @@ export function GoogleLoginButton({ mode }: GoogleLoginButtonProps) {
     try {
       const { error: authError } = await authClient.signIn.social({
         provider: "google",
+        callbackURL: "/dashboard",
       });
 
       if (authError) {
