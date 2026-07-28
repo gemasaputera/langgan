@@ -26,11 +26,10 @@ export function Hero() {
         <div className="mx-auto max-w-3xl pt-36 pb-24 sm:pt-44 sm:pb-32 lg:pt-52 lg:pb-40 text-center">
           <h1
             className="hero-heading animate-fade-in-up text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl text-balance"
-            style={{ letterSpacing: "-0.02em", "--i": "0" } as React.CSSProperties}
           >
             Jangan Lagi Kaget Saat
             <br />
-            <span className="accent">Tagihan Langganan</span> Tiba
+            <span className="v2-serif">Tagihan Langganan</span> Tiba
           </h1>
 
           <p

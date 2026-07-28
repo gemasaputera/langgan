@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Karla, Montserrat } from "next/font/google";
+import { Geist_Mono, Karla, Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const karla = Karla({
@@ -17,6 +17,11 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Langgan — Kelola Semua Langgananmu",
   description:
@@ -31,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${karla.variable} ${geistMono.variable} ${montserrat.variable} h-full antialiased dark`}
+      className={`${karla.variable} ${geistMono.variable} ${montserrat.variable} ${playfair.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}

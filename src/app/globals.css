@@ -10,6 +10,7 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-heading);
+  --font-serif: var(--font-serif);
   --font-montserrat: var(--font-heading);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -195,6 +196,15 @@
   font-family: "Montserrat", sans-serif;
   font-style: italic;
   font-weight: 600;
+}
+
+/* Accepted typeset variant v2: Montserrat + Playfair Display serif accent */
+.hero-heading .v2-serif {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  display: block;
+  letter-spacing: -0.005em;
 }
 
 /* Reduced motion */

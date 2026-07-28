@@ -120,7 +120,6 @@ export function EditSubscriptionDialog({
               onChange={(e) => setPrice(e.target.value)}
               required
               min="0"
-              step="1000"
               className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
             />
           </div>
